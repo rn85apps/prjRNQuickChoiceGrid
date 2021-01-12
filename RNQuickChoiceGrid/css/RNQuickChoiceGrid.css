@@ -1,0 +1,70 @@
+.RN\.RNQuickChoiceGrid * {
+	box-sizing: border-box;
+}
+
+.RN\.RNQuickChoiceGrid .rn-grid {
+	text-align: left;
+	flex-grow: 1;
+	flex-direction: column;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
+	overflow-x: auto;
+	min-height: 100px;
+	max-height: 250px;
+	position: relative;
+	width: 100%;
+}
+
+.RN\.RNQuickChoiceGrid table {
+	border-collapse: collapse;
+	min-width: 100%;
+	text-align: left;
+}
+
+.RN\.RNQuickChoiceGrid th,
+.RN\.RNQuickChoiceGrid td {
+	padding-left: 21px;
+	padding-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.RN\.RNQuickChoiceGrid th {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	background: white;
+	font-weight: normal;
+	font-size: 0.9rem;
+	color: rgb(68, 68, 68);
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.RN\.RNQuickChoiceGrid th:last-child {
+	border: 0;
+}
+
+.RN\.RNQuickChoiceGrid td {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	color: rgb(0, 0, 0);
+	font-size: 1rem;
+	text-align: left;
+}
+
+.RN\.RNQuickChoiceGrid tbody tr:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.RN\.RNQuickChoiceGrid .rn-radio {
+	flex: 0 1 16px;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	text-align: left;
+}
