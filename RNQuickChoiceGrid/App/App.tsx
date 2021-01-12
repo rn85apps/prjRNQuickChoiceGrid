@@ -72,7 +72,7 @@ const App: React.FunctionComponent<IProps> = ({
 			</div>
 			<div>
 				<div>
-					{`${recordIds.length} of ${pcfContext.parameters.dataset.paging.totalResultCount} loaded`}
+					{isSaving ? <>Saving ...</> : `${recordIds.length} of ${pcfContext.parameters.dataset.paging.totalResultCount} loaded`}
 				</div>
 				{pcfContext.parameters.dataset.paging.hasNextPage && (
 					<DefaultButton
@@ -82,7 +82,6 @@ const App: React.FunctionComponent<IProps> = ({
 						}
 					/>
 				)}
-				<div>Status: {isSaving ? <>Saving ...</> : <>OK</>}</div>
 			</div>
 		</>
 	);
