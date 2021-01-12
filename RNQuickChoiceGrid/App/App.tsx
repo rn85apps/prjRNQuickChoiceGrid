@@ -82,7 +82,7 @@ const App: React.FunctionComponent<IProps> = ({
 						}
 					/>
 				)}
-				<div>{isSaving ? <>Saving ...</> : <> </>}</div>
+				<div>Status: {isSaving ? <>Saving ...</> : <>OK</>}</div>
 			</div>
 		</>
 	);
