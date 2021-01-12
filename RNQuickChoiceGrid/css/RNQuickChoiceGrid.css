@@ -11,7 +11,7 @@
 	overflow-y: auto;
 	overflow-x: auto;
 	min-height: 100px;
-	max-height: 250px;
+	max-height: 350px;
 	position: relative;
 	width: 100%;
 }
@@ -58,7 +58,8 @@
 }
 
 .RN\.RNQuickChoiceGrid tbody tr:hover {
-	background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
 }
 
 .RN\.RNQuickChoiceGrid .rn-radio {
