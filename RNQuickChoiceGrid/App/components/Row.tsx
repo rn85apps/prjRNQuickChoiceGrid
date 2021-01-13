@@ -3,6 +3,7 @@ import { IInputs } from "../../generated/ManifestTypes";
 import DataSetInterfaces = ComponentFramework.PropertyHelper.DataSetApi;
 type DataSet = ComponentFramework.PropertyTypes.DataSet;
 import Choice from "./Choice";
+import { isContext } from "vm";
 
 interface IAppProps {
 	pcfContext: ComponentFramework.Context<IInputs>;
@@ -10,6 +11,7 @@ interface IAppProps {
 	options: ComponentFramework.PropertyHelper.OptionMetadata[];
 	columns: DataSetInterfaces.Column[];
 	target: string;
+	isDisabled: boolean;
 	onSave: () => void;
 }
 
@@ -19,6 +21,7 @@ const App: React.FunctionComponent<IAppProps> = ({
 	options,
 	columns,
 	target,
+	isDisabled,
 	onSave,
 }: IAppProps) => {
 	const [value, setValue] = React.useState(
@@ -27,6 +30,9 @@ const App: React.FunctionComponent<IAppProps> = ({
 		)
 	);
 
+	/** Callback handler used for updating the selected option value.
+	 *  Uses the webAPI to update the data source.
+	 */
 	const onChange = React.useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
 			onSave();
@@ -67,18 +73,28 @@ const App: React.FunctionComponent<IAppProps> = ({
 		[pcfContext.webAPI, target, recordId, columns, options, onSave]
 	);
 
+	/** Event handler for clicking the display name */
+	const onDisplayNameClick = () => {
+		const entityReference = pcfContext.parameters.dataset.records[
+			recordId
+		].getNamedReference();
+		pcfContext.parameters.dataset.openDatasetItem(entityReference);
+	};
+
+	const displayName = pcfContext.parameters.dataset.records[
+		recordId
+	].getFormattedValue(columns[0].name);
+
 	return (
 		<>
 			<tr>
 				<td>
 					<span
-						title={pcfContext.parameters.dataset.records[
-							recordId
-						].getFormattedValue(columns[0].name)}
+						className="rn-display-name"
+						title={displayName}
+						onClick={onDisplayNameClick}
 					>
-						{pcfContext.parameters.dataset.records[
-							recordId
-						].getFormattedValue(columns[0].name)}
+						{displayName}
 					</span>
 				</td>
 				{options.map((opt) => (
@@ -88,6 +104,7 @@ const App: React.FunctionComponent<IAppProps> = ({
 							option={opt}
 							onChange={onChange}
 							checked={opt.Label === value}
+							isDisabled={isDisabled}
 						/>
 					</td>
 				))}

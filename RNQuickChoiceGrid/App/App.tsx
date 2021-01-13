@@ -10,12 +10,14 @@ export interface IProps {
 	columns: DataSetInterfaces.Column[];
 	pcfContext: ComponentFramework.Context<IInputs>;
 	target: string;
+	isDisabled: boolean;
 }
 
 const App: React.FunctionComponent<IProps> = ({
 	pcfContext,
 	columns,
 	target,
+	isDisabled
 }: IProps) => {
 	const [isSaving, setIsSaving] = React.useState(false);
 
@@ -64,6 +66,7 @@ const App: React.FunctionComponent<IProps> = ({
 								columns={columns}
 								key={recordId}
 								target={target}
+								isDisabled={isDisabled}
 								onSave={onSave}
 							></Row>
 						))}

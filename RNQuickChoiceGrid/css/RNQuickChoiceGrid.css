@@ -90,7 +90,7 @@
 }
 
 .RN\.RNQuickChoiceGrid tbody tr:hover {
-	background-color: rgba(0, 0, 0, 0.05);
+	background-color: rgba(216, 216, 216);
 	cursor: pointer;
 }
 
@@ -127,4 +127,15 @@
 	flex: 1 1 auto;
 	width: 100%;
 	text-align: right;
+}
+
+.RN\.RNQuickChoiceGrid .rn-display-name {
+	font-weight: 400;
+	color: rgb(4, 89, 153);
+	cursor: pointer;
+}
+
+.RN\.RNQuickChoiceGrid .rn-display-name:hover {
+	text-decoration: underline;
+	color: rgb(4, 67, 124);
 }

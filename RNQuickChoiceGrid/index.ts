@@ -72,6 +72,7 @@ export class RNQuickChoiceGrid
 			pcfContext: context,
 			columns: propertySetColumns,
 			target: context.parameters.dataset.getTargetEntityType(),
+			isDisabled: context.mode.isControlDisabled
 		};
 
 		ReactDOM.render(React.createElement(App, props), this._wrapper);
