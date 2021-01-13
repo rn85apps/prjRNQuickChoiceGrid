@@ -35,6 +35,11 @@ const App: React.FunctionComponent<IAppProps> = ({
 	 */
 	const onChange = React.useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
+
+			if(isDisabled){
+				return;
+			}
+
 			onSave();
 
 			const index = options
@@ -70,7 +75,7 @@ const App: React.FunctionComponent<IAppProps> = ({
 				}
 			}
 		},
-		[pcfContext.webAPI, target, recordId, columns, options, onSave]
+		[pcfContext.webAPI, target, recordId, columns, options, onSave,isDisabled]
 	);
 
 	/** Event handler for clicking the display name */
@@ -104,7 +109,6 @@ const App: React.FunctionComponent<IAppProps> = ({
 							option={opt}
 							onChange={onChange}
 							checked={opt.Label === value}
-							isDisabled={isDisabled}
 						/>
 					</td>
 				))}

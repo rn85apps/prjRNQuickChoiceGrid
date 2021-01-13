@@ -61,6 +61,7 @@
 	table-layout: fixed;
 	width: 100%;
 	background-color: white;
+	font-family: "SegoeUI", "Segoe UI";
 }
 
 .RN\.RNQuickChoiceGrid th {

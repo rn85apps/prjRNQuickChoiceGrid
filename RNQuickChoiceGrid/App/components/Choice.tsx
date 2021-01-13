@@ -4,7 +4,6 @@ interface IChoiceProps {
 	recordId: string;
 	option: ComponentFramework.PropertyHelper.OptionMetadata;
 	checked: boolean;
-	isDisabled: boolean;
 	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -20,7 +19,6 @@ const Choice: React.FunctionComponent<IChoiceProps> = ({
 	recordId,
 	option,
 	checked,
-	isDisabled,
 	onChange,
 }: IChoiceProps) => {
 	return (
@@ -32,7 +30,6 @@ const Choice: React.FunctionComponent<IChoiceProps> = ({
 			onChange={onChange}
 			checked={checked}
 			title={option.Label}
-			disabled={isDisabled}
 		/>
 	);
 };
