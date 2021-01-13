@@ -9,19 +9,17 @@ interface IAppProps {
 	recordId: string;
 	options: ComponentFramework.PropertyHelper.OptionMetadata[];
 	columns: DataSetInterfaces.Column[];
-    target: string;
-    onSave: ()=> void;
+	target: string;
+	onSave: () => void;
 }
-
-
 
 const App: React.FunctionComponent<IAppProps> = ({
 	pcfContext,
 	recordId,
 	options,
 	columns,
-    target,
-    onSave
+	target,
+	onSave,
 }: IAppProps) => {
 	const [value, setValue] = React.useState(
 		pcfContext.parameters.dataset.records[recordId].getFormattedValue(
@@ -31,16 +29,15 @@ const App: React.FunctionComponent<IAppProps> = ({
 
 	const onChange = React.useCallback(
 		(event: React.ChangeEvent<HTMLInputElement>) => {
-
-            onSave();
+			onSave();
 
 			const index = options
 				.map((option) => option.Label)
 				.indexOf(event.target.value);
 			const option = options[index];
 
-            setValue(option.Label);
-            
+			setValue(option.Label);
+
 			executeSaveRecord();
 
 			async function executeSaveRecord() {
@@ -59,9 +56,9 @@ const App: React.FunctionComponent<IAppProps> = ({
 
 					if (!response) {
 						throw new Error("updateRecord not successful");
-                    }
-                    
-                    onSave();
+					}
+
+					onSave();
 				} catch (error) {
 					console.log(error.message);
 				}

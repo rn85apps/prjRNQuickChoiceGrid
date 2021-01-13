@@ -2,70 +2,129 @@
 	box-sizing: border-box;
 }
 
+/* Generic CSS reset */
+.RN\.RNQuickChoiceGrid div,
+.RN\.RNQuickChoiceGrid span,
+.RN\.RNQuickChoiceGrid table,
+.RN\.RNQuickChoiceGrid caption,
+.RN\.RNQuickChoiceGrid tbody,
+.RN\.RNQuickChoiceGrid tfoot,
+.RN\.RNQuickChoiceGrid thead,
+.RN\.RNQuickChoiceGrid tr,
+.RN\.RNQuickChoiceGrid th,
+.RN\.RNQuickChoiceGrid td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.RN\.RNQuickChoiceGrid table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/** Wrappers and containers */
+
+.RN\.RNQuickChoiceGrid .rn-component-wrapper {
+	overflow: auto;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	min-height: 100px;
+	display: grid;
+	grid-template-rows: auto 40px;
+}
+
 .RN\.RNQuickChoiceGrid .rn-grid {
-	text-align: left;
-	flex-grow: 1;
+	display: flex;
 	flex-direction: column;
+	flex: 1 1 auto;
+	text-align: left;
 	padding: 0;
 	margin: 0;
 	overflow-y: auto;
 	overflow-x: auto;
-	min-height: 100px;
-	max-height: 350px;
 	position: relative;
+	min-height: 100px;
+	max-height: calc(100vh - 40px);
 	width: 100%;
+	position: relative;
 }
 
 .RN\.RNQuickChoiceGrid table {
 	border-collapse: collapse;
 	min-width: 100%;
 	text-align: left;
-}
-
-.RN\.RNQuickChoiceGrid th,
-.RN\.RNQuickChoiceGrid td {
-	padding-left: 21px;
-	padding-right: 10px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	table-layout: fixed;
+	width: 100%;
+	background-color: white;
 }
 
 .RN\.RNQuickChoiceGrid th {
-	padding-top: 10px;
-	padding-bottom: 10px;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	z-index: 10;
-	background: white;
 	font-weight: normal;
-	font-size: 0.9rem;
+	background-color: white;
 	color: rgb(68, 68, 68);
-	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
-.RN\.RNQuickChoiceGrid th:last-child {
-	border: 0;
-}
-
+.RN\.RNQuickChoiceGrid th,
 .RN\.RNQuickChoiceGrid td {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	color: rgb(0, 0, 0);
-	font-size: 1rem;
-	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2rem;
+	padding: 0.5rem;
+	vertical-align: baseline;
+}
+
+.RN\.RNQuickChoiceGrid th:first-child,
+.RN\.RNQuickChoiceGrid td:first-child {
+	width: 33%;
 }
 
 .RN\.RNQuickChoiceGrid tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.05);
+	cursor: pointer;
 }
 
-.RN\.RNQuickChoiceGrid .rn-radio {
-	flex: 0 1 16px;
-	margin: 0;
-	padding: 0;
-	cursor: pointer;
+.RN\.RNQuickChoiceGrid .rn-footer {
+	height: 40px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 100%;
+	background-color: #efefef;
+	gap: 5;
+	vertical-align: middle;
+	justify-content: center;
+	align-content: center;
+}
+
+.RN\.RNQuickChoiceGrid div.rn-footer-left {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	width: 100%;
 	text-align: left;
+}
+
+.RN\.RNQuickChoiceGrid div.rn-footer-center {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+}
+
+.RN\.RNQuickChoiceGrid div.rn-footer-right {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	width: 100%;
+	text-align: right;
 }

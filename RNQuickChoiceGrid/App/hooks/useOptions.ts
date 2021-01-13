@@ -8,6 +8,27 @@ interface IUseOptions {
 	utils: ComponentFramework.Utility;
 }
 
+/**
+ * Use this when testing offline in the harness
+ */
+const demoOptions: ComponentFramework.PropertyHelper.OptionMetadata[] = [
+	{
+		Label: "One",
+		Value: 1000000,
+		Color: "red",
+	},
+	{
+		Label: "Two",
+		Value: 1000002,
+		Color: "blue",
+	},
+	{
+		Label: "Three",
+		Value: 1000003,
+		Color: "green",
+	},
+];
+
 export const useOptions = ({
 	pcfContext,
 	columnName,
@@ -24,25 +45,7 @@ export const useOptions = ({
 	React.useEffect(() => {
 		let cancel = false;
 
-		// let demoOptions: ComponentFramework.PropertyHelper.OptionMetadata[] = [
-		// 	{
-		// 		Label: "One",
-		// 		Value: 1000000,
-		// 		Color: "red",
-		// 	},
-		// 	{
-		// 		Label: "Two",
-		// 		Value: 1000002,
-		// 		Color: "blue",
-		// 	},
-		// 	{
-		// 		Label: "Three",
-		// 		Value: 1000003,
-		// 		Color: "green",
-		// 	},
-		// ];
-
-		// setOptions(demoOptions);
+		//setOptions(demoOptions);
 
 		async function executeRetrieveMetadata() {
 			try {

@@ -17,7 +17,7 @@ const App: React.FunctionComponent<IProps> = ({
 	columns,
 	target,
 }: IProps) => {
-	const recordIds = pcfContext.parameters.dataset.sortedRecordIds;
+	const [isSaving, setIsSaving] = React.useState(false);
 
 	/** custom hook for option set metadata */
 	const options = useOptions({
@@ -27,18 +27,18 @@ const App: React.FunctionComponent<IProps> = ({
 		utils: pcfContext.utils,
 	});
 
-	const [isSaving, setIsSaving] = React.useState(false);
+	const recordIds = pcfContext.parameters.dataset.sortedRecordIds;
 
 	const onSave = React.useCallback(() => {
 		setIsSaving((isSaving) => !isSaving);
 	}, []);
 
-	if (pcfContext.parameters.dataset.loading) {
+	if (
+		pcfContext.parameters.dataset.loading ||
+		!options.length ||
+		!columns.length
+	) {
 		return <>Loading ....</>;
-	}
-
-	if (!options.length) {
-		return <>Loading...</>;
 	}
 
 	return (
@@ -70,18 +70,19 @@ const App: React.FunctionComponent<IProps> = ({
 					</tbody>
 				</table>
 			</div>
-			<div>
-				<div>
-					{isSaving ? <>Saving ...</> : `${recordIds.length} of ${pcfContext.parameters.dataset.paging.totalResultCount} loaded`}
+			<div className="rn-footer">
+				<div className="rn-footer-left">{`${recordIds.length} of ${pcfContext.parameters.dataset.paging.totalResultCount} loaded`}</div>
+				<div className="rn-footer-center">
+					{pcfContext.parameters.dataset.paging.hasNextPage && (
+						<DefaultButton
+							text="Load more"
+							onClick={() =>
+								pcfContext.parameters.dataset.paging.loadNextPage()
+							}
+						/>
+					)}
 				</div>
-				{pcfContext.parameters.dataset.paging.hasNextPage && (
-					<DefaultButton
-						text="Load more"
-						onClick={() =>
-							pcfContext.parameters.dataset.paging.loadNextPage()
-						}
-					/>
-				)}
+				<div className="rn-footer-right">{isSaving && "Saving..."}</div>
 			</div>
 		</>
 	);
